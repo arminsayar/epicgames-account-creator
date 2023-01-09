@@ -14,7 +14,7 @@
 
 ## Dependencies
 
- [Download](https://chromedriver.chromium.org/downloads) chromDriver and add to your env variable env "path" 
+ [Download](https://chromedriver.chromium.org/downloads) chromDriver and add to your env variable "path" 
 
  Install [Nodejs](https://nodejs.org/en/download/)
 
