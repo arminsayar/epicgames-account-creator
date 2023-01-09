@@ -2,27 +2,28 @@
 
 ## Install
 
-```bash
-npm install
-```
+ ```bash
+ npm install
+ ```
 
-or
+ or
 
-```bash
-yarn add
-```
+ ```bash
+ yarn add
+ ```
 
 ## Dependencies
 
- [Download](https://chromedriver.chromium.org/downloads) chromdriver and add to your varible env "path" 
-Install [Nodejs](https://nodejs.org/en/download/)
+ [Download](https://chromedriver.chromium.org/downloads) chromDriver and add to your env variable env "path" 
+
+ Install [Nodejs](https://nodejs.org/en/download/)
 
 ## Run
 
-```bash
-npm start
-```
+ ```bash
+ npm start
+ ```
 
 ## Author
 
-[ArminIsReal](https://arminsayar.ir/)
+ [ArminIsReal](https://arminsayar.ir/)
