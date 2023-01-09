@@ -1,4 +1,4 @@
-# 1.
+# Script for creating new epic games accounts | "Free accounts"
 
 ## Install
 
