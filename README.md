@@ -1,1 +1,1 @@
-# epicgames-account-creator
+# run "npm start" to make account fast as you can
