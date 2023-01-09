@@ -1,9 +1,28 @@
-1.
-run "npm install"
-2.
-[Download chromdriver and add to your varible env "path"](https://chromedriver.chromium.org/downloads)
-3.
-[Install Nodejs](https://nodejs.org/en/download/)
-4.
- run "npm start" to make account fast as you can
+# 1.
 
+## Install
+
+```bash
+npm install
+```
+
+or
+
+```bash
+yarn add
+```
+
+## Dependencies
+
+ [Download](https://chromedriver.chromium.org/downloads) chromdriver and add to your varible env "path" 
+Install [Nodejs](https://nodejs.org/en/download/)
+
+## Run
+
+```bash
+npm start
+```
+
+## Author
+
+[ArminIsReal](https://arminsayar.ir/)
