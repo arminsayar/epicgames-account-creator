@@ -1,45 +1,62 @@
-const { Builder, By, Key, util } = require("selenium-webdriver");
+const { Builder, By, Key, util, WebDriver, until } = require("selenium-webdriver");
+const chrome = require('selenium-webdriver/chrome');
+const proxy = require('selenium-webdriver/proxy')
+const options = new chrome.Options();
+require('dotenv').config();
 
-function idFinder(id) {
-    driver.findElement(By.id(id));
-};
+const URL = "https://www.epicgames.com/id/register/date-of-birth";
 
-function xpathFinder(tag, text) {
-    driver.findElement(By.xpath(`//${tag}[text()='${text}']`));
-};
+options.addArguments(`user-data-dir=${process.env.PROFILE_DIR}`)
+options.addArguments(`profile-directory=${process.env.PROFILE_NUM}`)
 
-function classFinder(className) {
-    driver.findElement(By.className(className));
-};
+const proxyServer = process.env.PROXY;
 
-function nameFinder(name) {
-    driver.findElement(By.name(name));
-};
+function getRandom(min, max) {
+    const floatRandom = Math.random()
 
-async function index() {
-    let driver = await new Builder().forBrowser("chrome").build();
-    await driver.get("https://www.epicgames.com/id/register/date-of-birth");
-    await setTimeout(async () => {
-        await idFinder("year").sendKeys("1999");
-        await idFinder("month").click();
-        await xpathFinder("//li[text()='Jun']").click();
-        await idFinder("day").click();
-        await xpathFinder("//li[text()='8']").click();
-        await idFinder("continue").click();
-    }, 1000)
-    await setTimeout(async () => {
-        await classFinder("MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator").click();
-        await xpathFinder("//li[text()='United States']").click();
-        await nameFinder("name").sendKeys("Armin");
-        await nameFinder("lastname").sendKeys("Real");
-        await nameFinder("displayname").sendKeys("ArminIsReal");
-        await nameFinder("email").sendKeys("armin@real.com");
-        await nameFinder("password").sendKeys("Armin123456");
-        await nameFinder("optIn").click();
-        await nameFinder("tos").click();
-        await idFinder("btn-submit").click();
-    }, 1000)
+    const difference = max - min
 
+    // random between 0 and the difference
+    const random = Math.round(difference * floatRandom)
 
+    const randomWithinRange = random + min
+
+    return randomWithinRange
 }
-index()
+
+const driver = new Builder()
+    .forBrowser("chrome")
+    // for using custom profile
+    // .setChromeOptions(options)
+
+    // for using proxy
+    // .setProxy(proxy.manual({
+    //     http: proxyServer,
+    //     https: proxyServer
+    // }))
+    .build();
+
+(async function index() {
+    await driver.get(URL);
+    firstPage();
+})()
+
+
+
+async function firstPage() {
+    await driver
+        .wait(until.elementLocated(By.id('month')), 20000)
+        .click()
+    await driver
+        .wait(until.elementLocated(By.xpath("//li[text()='Aug']")), 10000)
+        .click()
+    await driver
+        .wait(until.elementLocated(By.id('day')), 10000)
+        .click()
+    await driver
+        .wait(until.elementLocated(By.xpath(`//li[text()='${getRandom(1, 30)}']`)), 10000)
+        .click()
+    await driver
+        .wait(until.elementLocated(By.id('year')), 10000)
+        .sendKeys(getRandom(1990, 2000), Key.RETURN)
+}
