@@ -1,4 +1,5 @@
-# Script for creating new epic games accounts | "Free accounts"
+# Script for creating epicgames accounts
+### This script helping you to create accounts and then adding free games on your account to use how you like it :)
 
 ## Install
 
@@ -14,7 +15,7 @@
 
 ## Dependencies
 
- [Download](https://chromedriver.chromium.org/downloads) chromDriver and add to your env variable "path" 
+ If you use chrome: [Download](https://chromedriver.chromium.org/downloads) chromDriver and add to your environment variable (path) 
 
  Install [Nodejs](https://nodejs.org/en/download/)
 
